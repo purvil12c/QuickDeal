@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_seller"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="purvil12c.com.quickdeal.SellerActivity"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:background="@color/colorPrimary"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:titleTextColor="#ffffff"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOGIN AS SELLER"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        style="@style/sectionHeader"
+        />
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:background="@color/grey"
+        android:layout_gravity="center"
+        android:textColor="#000000"
+        android:layout_marginTop="50dp"
+        android:hint="Email Address"
+        android:drawableLeft="@drawable/ic_user"
+        />
+    <EditText
+        android:layout_width="250dp"
+        android:textColor="#000000"
+        android:layout_gravity="center"
+        android:layout_height="40dp"
+        android:background="@color/grey"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_password"
+        android:hint="Password"
+        />
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/roundbutton"
+        android:layout_gravity="center"
+        android:layout_margin="25dp"
+        android:text="Sign in"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forgot your password?"
+        android:id="@+id/forgot_tv"
+        android:textColor="#000000"
+        android:layout_gravity="center"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OR"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continue with"
+        android:textColor="#000000"
+        android:layout_gravity="center"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/facebook"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+        />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/google"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:id="@+id/google"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/register_tv"
+        android:text="Don't have an account? Register now"
+        android:textColor="#000000"
+        android:layout_gravity="center"
+
+        />
+
+
+</LinearLayout>

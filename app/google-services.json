@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "672087605381",
+    "project_id": "affable-tribute-165116"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:672087605381:android:93a73d7590c11ac7",
+        "android_client_info": {
+          "package_name": "purvil12c.com.quickdeal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "672087605381-mt1221phjrk5tja7s1mhr5l4vsdn5dps.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "672087605381-0krlbqm7cka5lvebvr3vn0v6uqptg4uc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "purvil12c.com.quickdeal",
+            "certificate_hash": "bbb4978677bcc681d269a653e841264789a5cb93"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmJoSGZiDzSyTB62MH11jIbJA51jwQhXo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
