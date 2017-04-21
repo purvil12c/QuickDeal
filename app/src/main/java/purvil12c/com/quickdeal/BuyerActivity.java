@@ -2,6 +2,7 @@ package purvil12c.com.quickdeal;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,7 +46,7 @@ public class BuyerActivity extends AppCompatActivity implements GoogleApiClient.
     private static final int FB_REQUEST_CODE = 2000;
 
 
-
+    ImageView facebookImageView;
     ImageView googleImageView;
     LoginButton facebookLogin;
     @Override
@@ -78,6 +79,13 @@ public class BuyerActivity extends AppCompatActivity implements GoogleApiClient.
 
         facebookLogin=(LoginButton) findViewById(R.id.fb_login_button);
         googleImageView=(ImageView)findViewById(R.id.google);
+        facebookImageView=(ImageView)findViewById(R.id.facebook);
+        facebookImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                facebookLogin.performClick();
+            }
+        });
         GoogleSignInOptions signInOptions=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googleApiClient=new GoogleApiClient.Builder(this).enableAutoManage(this,this).addApi(Auth.GOOGLE_SIGN_IN_API,signInOptions).build();
         googleImageView.setOnClickListener(new View.OnClickListener() {
