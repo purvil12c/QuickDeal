@@ -13,6 +13,7 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
@@ -33,17 +34,24 @@ public class BuyerActivity extends AppCompatActivity implements GoogleApiClient.
     TextView textView1;
     TextView textView2;
 
+    LoginButton loginButton;
+
     private CallbackManager callbackManager;
 
     private static GoogleApiClient googleApiClient;
-    private static final int REQUEST_CODE = 1000;
+    private static final int GOOGLE_REQUEST_CODE = 1000;
+
+
+    private static final int FB_REQUEST_CODE = 2000;
+
+
 
     ImageView googleImageView;
     LoginButton facebookLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //FacebookSdk.sdkInitialize(getApplicationContext());
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_buyer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Seller");
@@ -68,7 +76,7 @@ public class BuyerActivity extends AppCompatActivity implements GoogleApiClient.
             }
         });
 
-        //facebookLogin=(LoginButton) findViewById(R.id.facebook);
+        facebookLogin=(LoginButton) findViewById(R.id.fb_login_button);
         googleImageView=(ImageView)findViewById(R.id.google);
         GoogleSignInOptions signInOptions=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googleApiClient=new GoogleApiClient.Builder(this).enableAutoManage(this,this).addApi(Auth.GOOGLE_SIGN_IN_API,signInOptions).build();
@@ -78,25 +86,30 @@ public class BuyerActivity extends AppCompatActivity implements GoogleApiClient.
                 signIn();
             }
         });
+
+
         callbackManager = CallbackManager.Factory.create();
 
-        /*facebookLogin.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+        facebookLogin.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
 
+                Toast.makeText(getApplicationContext(),"Login Sucessful "+loginResult.getAccessToken().getUserId(),Toast.LENGTH_LONG).show();
+                LoginManager.getInstance().logOut();
             }
 
 
             @Override
             public void onCancel() {
-
+                Toast.makeText(getApplicationContext(),"Login Cancelled!",Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onError(FacebookException e) {
 
+                Toast.makeText(getApplicationContext(),"Login Error!",Toast.LENGTH_LONG).show();
             }
-        });*/
+        });
     }
 
     @Override
@@ -112,7 +125,7 @@ public class BuyerActivity extends AppCompatActivity implements GoogleApiClient.
 
     private void signIn(){
         Intent intent=Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
-        startActivityForResult(intent,REQUEST_CODE);
+        startActivityForResult(intent,GOOGLE_REQUEST_CODE);
 
     }
     private void signOut(){
@@ -139,9 +152,13 @@ public class BuyerActivity extends AppCompatActivity implements GoogleApiClient.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==REQUEST_CODE){
+        if(requestCode==GOOGLE_REQUEST_CODE){
             GoogleSignInResult result=Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleResults(result);
+        }
+
+        if(requestCode==FB_REQUEST_CODE){
+            callbackManager.onActivityResult(requestCode,resultCode,data);
         }
     }
 }
